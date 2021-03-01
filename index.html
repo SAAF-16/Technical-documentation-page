@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sass (stylesheet language)</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<body>
+  <div id="flex">
+        <main id="main-doc">
+            <h1>Sass</h1>
+            <p>Sass (short for syntactically awesome style sheets) is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets (CSS). SassScript is the scripting language itself.</p>
+            
+            <section class="main-section" id="Major_implementations">
+                <header>Major implementations</header>
+                <p>SassScript was implemented in multiple languages, the noteworthy implementations are:
+                    <ul>
+                        <li>The original open-source Ruby implementation created in 2006,[6] since deprecated due to the lack of maintainers and reached End-of-Life in March 2019</li>
+                        <li>The official open-source Dart implementation</li>
+                        <li>libSass, the official open-source C++ implementation</li>
+                        <li>the official JavaScript implementation, published as "sass" module on npm.</li>
+                        <li>JSass, an unofficial Java implementation.</li>
+                        <li>phamlp, an unofficial SASS/SCSS implementation in PHP</li>
+                        <li>Vaadin has a Java implementation of Sass</li>
+                        <li>Firebug, a Firefox XUL ("legacy") extension for web development.[11] It has been since deprecated in favor of developer tools integrated into Firefox itself. It stopped working since Firefox 57 dropped support for XUL extensions.</li>
+                    </ul>
+                </p>
+            </section>
+            <h3 id="Feautures">-Feautures</h3>
+            <section class="main-section" id="Variables">
+                <header>Variables</header>
+                <p>
+                    Sass allows variables to be defined. Variables begin with a dollar sign ($). Variable assignment is done with a colon (:).
+                </p>
+                    <ul>
+                        <li>Numbers (including units)</li>
+                        <li>Strings (with quotes or without)</li>
+                        <li>Colors (name, or names)</li>
+                        <li>Booleans</li>
+                    </ul>
+                <p>
+                    Variables can be arguments to or results from one of several available functions.[12] During translation, the values of the variables are inserted into the output CSS document.
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>SCSS</p>
+                        <div>
+                            <code>
+                                $primary-color: #3bbfce;<br>
+                                $margin: 16px;<br>
+                                .content-navigation {<br>
+                                  border-color: $primary-color;<br>
+                                  color: darken($primary-color, 10%);<br>
+                                }<br>
+                                .border {<br>
+                                  padding: $margin / 2;<br>
+                                  margin: $margin / 2;<br>
+                                  border-color: $primary-color;<br>
+                                }<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                $primary-color: #3bbfce<br>
+                                $margin: 16px<br>
+                                .content-navigation<br>
+                                  border-color: $primary-color<br>
+                                  color: darken($primary-color, 10%)<br>
+                                .border<br>
+                                  padding: $margin/2<br>
+                                  margin:  $margin/2<br>
+                                  border-color: $primary-color<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                .content-navigation {<br>
+                                    border-color: #3bbfce;<br>
+                                    color: #2b9eab;<br>
+                                  }<br>
+                                  .border {<br>
+                                    padding: 8px;<br>
+                                    margin: 8px;<br>
+                                    border-color: #3bbfce;<br>
+                                  }<br>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-section" id="Nesting">
+                <header>Nesting</header>
+                <p>
+                    CSS does support logical nesting, but the code blocks themselves are not nested. Sass allows the nested code to be inserted within each other.[2]
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>SCSS</p>
+                        <div>
+                            <code>
+                                table.hl {<br>
+                                    margin: 2em 0;<br>
+                                    td.ln {<br>
+                                      text-align: right;<br>
+                                    }<br>
+                                  }<br>
+                                  
+                                  li {<br>
+                                    font: {<br>
+                                      family: serif;<br>
+                                      weight: bold;<br>
+                                      size: 1.3em;<br>
+                                    }<br>
+                                  }<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                table.hl <br>
+  margin: 2em 0<br>
+  td.ln <br>
+    text-align: right<br>
+  
+li <br>
+  font: <br>
+    family: serif<br>
+    weight: bold<br>
+    size: 1.3em<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                table.hl {<br>
+                                    margin: 2em 0;<br>
+                                  }<br>
+                                  table.hl td.ln {<br>
+                                    text-align: right;<br>
+                                  }<br>
+                                  
+                                  li {<br>
+                                    font-family: serif;<br>
+                                    font-weight: bold;<br>
+                                    font-size: 1.3em;<br>
+                                  }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-section" id="Loops">
+                <header>Loops</header>
+                <p>Sass allows for iterating over variables using @for, @each and @while, which can be used to apply different styles to elements with similar classes or ids.
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                $squareCount: 4<br>
+                                @for $i from 1 through $squareCount <br>
+                                  #square-#{$i} <br>
+                                   background-color: red<br>
+                                   width: 50px * $i<br>
+                                   height: 120px / $i<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                #square-1 {<br>
+                                    background-color: red;<br>
+                                    width: 50px;<br>
+                                    height: 120px;<br>
+                                  }<br>
+                            
+                                  #square-2 {<br>
+                                    background-color: red;<br>
+                                    width: 100px;<br>
+                                    height: 60px;<br>
+                                  }<br>
+                            
+                                  #square-3 {<br>
+                                    background-color: red;<br>
+                                    width: 150px;<br>
+                                    height: 40px;<br>
+                                  }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-section" id="Arguments">
+                <header>Arguments</header>
+                <p>Mixins also support arguments.
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                =left($dist) <br>
+                                float: left<br>
+                                margin-left: $dist<br>
+                            
+                              #data <br>
+                                +left(10px)<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                #data {<br>
+                                    float: left;<br>
+                                    margin-left: 10px;<br>
+                                  }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-section" id="In_combination">
+                <header>In combination</header>
+                <p>
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                =table-base<br>
+                              th<br>
+                                text-align: center<br>
+                                font-weight: bold<br>
+                              td, th <br>
+                                padding: 2px<br>
+                            
+                            =left($dist) <br>
+                              float: left<br>
+                              margin-left: $dist<br>
+                            
+                            #data <br>
+                              +left(10px)<br>
+                              +table-base<br>
+                            </code>
+                        </div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                #data {<br>
+                                    float: left;<br>
+                                    margin-left: 10px;<br>
+                                  }<br>
+                                  #data th {<br>
+                                    text-align: center;<br>
+                                    font-weight: bold;<br>
+                                  }<br>
+                                  #data td, #data th {<br>
+                                    padding: 2px;<br>
+                                  }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main-section" id="Selector_inheritance">
+                <header>Selector inheritance</header>
+                <p>While CSS3 supports the Document Object Model (DOM) hierarchy, it does not allow selector inheritance. In Sass, inheritance is achieved by inserting a line inside of a code block that uses the @extend keyword and references another selector. The extended selector's attributes are applied to the calling selector.[2]
+                </p>
+                <div id="div-code">
+                    <div>
+                        <p>Sass</p>
+                        <div>
+                            <code>
+                                .error<br>
+                              border: 1px #f00<br>
+                              background: #fdd<br>
+                            
+                            .error.intrusion <br>
+                              font-size: 1.3em<br>
+                              font-weight: bold<br>
+                            
+                            .badError <br>
+                              @extend .error<br>
+                              border-width: 3px<br>
+                            </code>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p>CSS</p>
+                        <div>
+                            <code>
+                                .error, .badError {<br>
+                                    border: 1px #f00;<br>
+                                    background: #fdd;<br>
+                                  }<br>
+                            
+                                  .error.intrusion,
+                                  .badError.intrusion {<br>
+                                    font-size: 1.3em;<br>
+                                    font-weight: bold;<br>
+                                  }<br>
+                            
+                                  .badError {<br>
+                                    border-width: 3px;<br>
+                                  }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <nav id="navbar">
+            <header id="nav-header">Sass Documentation</header>
+            <ul id="nav-ul">
+                <li id="nav-list" class="mTop"><a class="nav-link " href="#Major_implementations">Major implementations</a></li>
+                <li id="nav-list"><a href="#Feautures">Feautures</a></li>
+                <li id="nav-list"><a class="nav-link" href="#Variables">Variables</a></li>
+                <li id="nav-list"><a class="nav-link" href="#Nesting">Nesting</a></li>
+                <li id="nav-list"><a class="nav-link" href="#Loops">Loops</a></li>
+                <li id="nav-list"><a class="nav-link" href="#Arguments">Arguments</a></li>
+                <li id="nav-list"><a class="nav-link" href="#In_combination">In combination</a></li>
+                <li id="nav-list"><a class="nav-link" href="#Selector_inheritance">Selector inheritance</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
